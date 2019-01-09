@@ -22,15 +22,24 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      todo: ToDo
+      todo: ToDo,
+      inputText: '',
+      
     };
+    
   };
+   handleChanges=(ev) => {
+    this.setState({[ev.target.name]:ev.target.value})
+    
+    console.log(ev.target.name);
+
+}
   
   render() {
     return (
       <div>
       <ToDoList ToDo ={this.state.todo} />
-      <TodoForm />
+      <TodoForm handleChanges ={this.handleChanges} inputText ={this.state.inputText}/>
       </div>
     );
   }
