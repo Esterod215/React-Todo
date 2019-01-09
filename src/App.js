@@ -33,13 +33,21 @@ class App extends React.Component {
     
     console.log(ev.target.name);
 
-}
+};
+addNewTask=(ev) => {
+  ev.preventDefault();
+  this.setState({todo:[...this.state.todo,{inputText: this.state.inputText}]});
+  
+
+};
+
+
   
   render() {
     return (
       <div>
       <ToDoList ToDo ={this.state.todo} />
-      <TodoForm handleChanges ={this.handleChanges} inputText ={this.state.inputText}/>
+      <TodoForm addNewTask ={this.addNewTask} handleChanges ={this.handleChanges} inputText ={this.state.inputText}/>
       </div>
     );
   }
