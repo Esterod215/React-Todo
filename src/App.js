@@ -36,7 +36,7 @@ class App extends React.Component {
 };
 addNewTask=(ev) => {
   ev.preventDefault();
-  this.setState({todo:[...this.state.todo,{inputText: this.state.inputText}]});
+  this.setState({todo:[...this.state.todo,{task:this.state.inputText,id:Date.now(),completed:false}],inputText:''});
   
 
 };
