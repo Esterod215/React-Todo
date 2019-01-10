@@ -40,14 +40,29 @@ addNewTask=(ev) => {
   
 
 };
+toggleTrue=id=>{
+  this.setState({
+    todo: this.state.todo.map((task) => {
+      if (id !== task.id) {
+        return task;
+      } else {
+        
+        return {
+          ...task,
+          completed: !task.completed
+        };
+      }
+    })
+  },()=>console.log(this.state.todo[0].completed));
+};
 
 
   
   render() {
     return (
       <div>
-      <ToDoList ToDo ={this.state.todo} />
-      <TodoForm addNewTask ={this.addNewTask} handleChanges ={this.handleChanges} inputText ={this.state.inputText}/>
+      <ToDoList toggleTrue={this.toggleTrue} todo={this.state.todo}/>
+      <TodoForm addNewTask={this.addNewTask} handleChanges={this.handleChanges} inputText={this.state.inputText}/>
       </div>
     );
   }

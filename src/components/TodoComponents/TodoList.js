@@ -6,8 +6,20 @@ import React from 'react';
 function TodoList(props) {
     return(
         <div>
-            {props.ToDo.map(list => {
-                return <Todo task={list.task}/>
+            {props.todo.map((list, index)=> {
+                return( 
+                <Todo 
+                task={list.task}
+                
+                id={list.id}
+                toggleTrue={props.toggleTrue}
+                completed={list.completed}
+
+
+
+                
+                />
+                );
             })}
         </div>
     );
