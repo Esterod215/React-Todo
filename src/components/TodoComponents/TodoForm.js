@@ -14,8 +14,8 @@ function TodoForm(props){
         Submit
         </button>
         <button 
-        
-        >Clear</button>
+        onClick ={props.clear}
+        >Clear Completed</button>
         
     </form>
 );

@@ -6,12 +6,12 @@ const ToDo = [
   {
     task: 'Organize Garage',
     id: 1528817077286,
-    completed: false
+    completed: false,
   },
   {
     task: 'Bake Cookies',
     id: 1528817084358,
-    completed: false
+    completed: false,
   }
 ];
 
@@ -36,7 +36,8 @@ class App extends React.Component {
 };
 addNewTask=(ev) => {
   ev.preventDefault();
-  this.setState({todo:[...this.state.todo,{task:this.state.inputText,id:Date.now(),completed:false}],inputText:''});
+  this.setState(
+    {todo:[...this.state.todo,{task:this.state.inputText,id:Date.now(),completed:false}],inputText:''});
   
 
 };
@@ -55,6 +56,12 @@ toggleTrue=id=>{
     })
   },()=>console.log(this.state.todo[0].completed));
 };
+clear = ev => {
+  ev.preventDefault();
+  this.setState({
+    todo: this.state.todo.filter((task) => !task.completed )
+  });
+};
 
 
   
@@ -62,7 +69,7 @@ toggleTrue=id=>{
     return (
       <div>
       <ToDoList toggleTrue={this.toggleTrue} todo={this.state.todo}/>
-      <TodoForm addNewTask={this.addNewTask} handleChanges={this.handleChanges} inputText={this.state.inputText}/>
+      <TodoForm clear={this.clear} addNewTask={this.addNewTask} handleChanges={this.handleChanges} inputText={this.state.inputText}/>
       </div>
     );
   }
